@@ -5,7 +5,6 @@ import { RootStackParamList } from "../types/RootStackParamList";
 import HomeScreen from "../screens/home";
 import PassScreen from "../screens/pass";
 import WelcomeScreen from "../screens/welcome";
-import AppProvider from "../context/AppProvider";
 import { AppContext } from "../context/AppProvider";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
