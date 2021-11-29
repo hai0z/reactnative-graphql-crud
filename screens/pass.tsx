@@ -22,7 +22,7 @@ const Pass: React.FC<IProps> = ({ navigation }) => {
     const [error, setError] = useState<string>("");
 
     const handleAuth = () => {
-        navigation.navigate("Home");
+        password == input ? navigation.navigate("Home") : setError("sai mk");
     };
 
     useEffect((): any => {

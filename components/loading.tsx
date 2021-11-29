@@ -4,7 +4,8 @@ interface IProps {
     children: ReactNode | undefined | any;
 }
 const Loading = ({ children }: IProps) => {
-    const { loading } = useContext(AppContext);
+    const { loading, password } = useContext(AppContext);
+    console.log(loading, password);
     return loading ? <Fragment /> : children;
 };
 

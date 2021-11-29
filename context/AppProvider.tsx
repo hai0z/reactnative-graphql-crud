@@ -5,6 +5,7 @@ interface IContextProps {
     setPassword: React.Dispatch<React.SetStateAction<string>>;
     loading: boolean;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+    navigation: string;
 }
 interface IProps {
     children: React.ReactNode;
@@ -14,6 +15,7 @@ export const AppContext = createContext<IContextProps>({
     setPassword: () => {},
     loading: true,
     setLoading: () => {},
+    navigation: "",
 });
 const AppProvider = ({ children }: IProps) => {
     const [password, setPassword] = React.useState<string | any>(
@@ -21,16 +23,22 @@ const AppProvider = ({ children }: IProps) => {
             const response = await AsyncStorage.getItem("auth");
             if (response) {
                 setLoading(false);
+                setNavigation("Pass");
+                console.log(response);
                 return JSON.parse(response);
             } else {
+                setLoading(false);
+                setNavigation("Welcome");
                 return "";
             }
         }
     );
+
     const [loading, setLoading] = React.useState<boolean>(true);
+    const [navigation, setNavigation] = React.useState<string>("Pass");
     return (
         <AppContext.Provider
-            value={{ password, setPassword, loading, setLoading }}
+            value={{ password, setPassword, loading, setLoading, navigation }}
         >
             {children}
         </AppContext.Provider>

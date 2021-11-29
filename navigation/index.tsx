@@ -6,14 +6,15 @@ import HomeScreen from "../screens/home";
 import PassScreen from "../screens/pass";
 import WelcomeScreen from "../screens/welcome";
 import { AppContext } from "../context/AppProvider";
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
-    const { password } = useContext(AppContext);
-    console.log(password);
+    const { navigation } = useContext(AppContext);
+    console.log(navigation);
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName={!password ? "Welcome" : "Pass"}>
+            <Stack.Navigator initialRouteName="Pass">
                 <Stack.Screen
                     name="Pass"
                     component={PassScreen}
