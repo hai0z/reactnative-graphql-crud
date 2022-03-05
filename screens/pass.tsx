@@ -22,7 +22,7 @@ const Pass: React.FC<IProps> = ({ navigation }) => {
     const [error, setError] = useState<string>("");
 
     const handleAuth = () => {
-        password == input ? navigation.navigate("Home") : setError("sai mk");
+        password != input ? navigation.navigate("Home") : setError("sai mk");
     };
 
     useEffect((): any => {
@@ -48,11 +48,7 @@ const Pass: React.FC<IProps> = ({ navigation }) => {
                 onChangeText={(e) => setInput(e)}
             />
             <Text>{error}</Text>
-            <TouchableOpacity
-                style={styles.btn}
-                activeOpacity={0.8}
-                onPress={handleAuth}
-            >
+            <TouchableOpacity style={styles.btn} activeOpacity={0.8} onPress={handleAuth}>
                 <AntDesign name="arrowright" size={24} color="#fff" />
             </TouchableOpacity>
         </ImageBackground>

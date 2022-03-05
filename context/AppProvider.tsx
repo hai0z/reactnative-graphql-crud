@@ -17,14 +17,13 @@ export const AppContext = createContext<IContextProps>({
     setLoading: () => {},
     navigation: "",
 });
-const AppProvider = ({ children }: IProps) => {
+const AppProvider: React.FC<IProps> = ({ children }) => {
     const [password, setPassword] = React.useState<string | any>(
         async (): Promise<string> => {
             const response = await AsyncStorage.getItem("auth");
             if (response) {
                 setLoading(false);
                 setNavigation("Pass");
-                console.log(response);
                 return JSON.parse(response);
             } else {
                 setLoading(false);

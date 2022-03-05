@@ -10,8 +10,6 @@ import { AppContext } from "../context/AppProvider";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
-    const { navigation } = useContext(AppContext);
-    console.log(navigation);
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Pass">
