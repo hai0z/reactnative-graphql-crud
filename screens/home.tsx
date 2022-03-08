@@ -9,12 +9,25 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { useQuery, useMutation } from "@apollo/client";
-import { getBooks, IBookData, IBook, getAuthors, IAuthor, IAuthorData } from "../graphql/queries";
+import {
+    getBooks,
+    IBookData,
+    IBook,
+    getAuthors,
+    IAuthor,
+    IAuthorData,
+} from "../graphql/queries";
 import { Picker } from "@react-native-picker/picker";
 import { addBook, deleteBook } from "../graphql/mutations";
 const { width } = Dimensions.get("window");
 
-const BookItem = ({ item, onDelete }: { item: IBook; onDelete: (id: string) => void }) => {
+const BookItem = ({
+    item,
+    onDelete,
+}: {
+    item: IBook;
+    onDelete: (id: string) => void;
+}) => {
     return (
         <View
             style={{
@@ -41,7 +54,10 @@ const BookItem = ({ item, onDelete }: { item: IBook; onDelete: (id: string) => v
                 <TouchableOpacity style={styles.updateBtn}>
                     <Text style={styles.btnText}>Sửa</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.delBtn} onPress={() => onDelete(item._id)}>
+                <TouchableOpacity
+                    style={styles.delBtn}
+                    onPress={() => onDelete(item._id)}
+                >
                     <Text style={styles.btnText}>Xoá</Text>
                 </TouchableOpacity>
             </View>
@@ -123,7 +139,11 @@ const Home = () => {
                         }}
                     >
                         {author?.data?.authors?.map((item) => (
-                            <Picker.Item label={item.name} value={item._id} key={item._id} />
+                            <Picker.Item
+                                label={item.name}
+                                value={item._id}
+                                key={item._id}
+                            />
                         ))}
                     </Picker>
                 </View>
@@ -135,7 +155,9 @@ const Home = () => {
                 contentContainerStyle={{ justifyContent: "space-between" }}
                 numColumns={2}
                 data={data?.books}
-                renderItem={({ item }) => <BookItem item={item} onDelete={deleteBookHandle} />}
+                renderItem={({ item }) => (
+                    <BookItem item={item} onDelete={deleteBookHandle} />
+                )}
                 keyExtractor={(item) => item._id}
             />
         </View>
